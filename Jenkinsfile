@@ -6,12 +6,13 @@ pipeline {
         DOCKER_USERNAME = 'shrinidhiupadhyaya'
         BACKEND_IMAGE = "${DOCKER_USERNAME}/mean-backend"
         FRONTEND_IMAGE = "${DOCKER_USERNAME}/mean-frontend"
+        GIT_REPO = 'https://github.com/Shrinidhi972004/Discover-Dollar-Technical-Assignment.git'
     }
     
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: "${GIT_REPO}"
             }
         }
         
@@ -56,7 +57,7 @@ pipeline {
     
     post {
         always {
-            sh 'docker logout'
+            sh 'docker logout || true'
         }
         success {
             echo 'Deployment successful!'
