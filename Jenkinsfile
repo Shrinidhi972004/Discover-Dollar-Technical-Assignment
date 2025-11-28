@@ -49,8 +49,8 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker-compose pull'
-                sh 'docker-compose up -d --force-recreate'
+                sh 'docker compose down || true'
+                sh 'docker compose up -d --build'
             }
         }
     }
