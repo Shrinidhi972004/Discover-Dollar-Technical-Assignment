@@ -18,6 +18,6 @@ describe('AddTutorialComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expec(component).toBeTruthy();
   });
 });
